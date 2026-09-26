@@ -1,0 +1,40 @@
+# Environnement virtuel
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.class
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Fichiers temporaires
+*.tmp
+*.temp
+*.log
+
+# Variables d'environnement
+.env
+.env.*
+
+# Distribution
+build/
+dist/
+*.egg-info/
+
+# Cache
+.cache/
+
+# Modèles générés
+*.pkl
+*.joblib
