@@ -1,40 +1,56 @@
 # Environnement virtuel
+
 .venv/
+.venv_tensorflow/
 venv/
 env/
 
 # Python
+
 __pycache__/
 *.py[cod]
-*.class
+*$py.class
 
 # Jupyter
+
 .ipynb_checkpoints/
 
 # VS Code
+
 .vscode/
 
-# Fichiers syst�me
+# Fichiers système
+
 .DS_Store
 Thumbs.db
 
 # Fichiers temporaires
+
 *.tmp
 *.temp
 *.log
 
 # Variables d'environnement
+
 .env
 .env.*
 
-# Distribution
+# Distribution / packaging
+
 build/
 dist/
 *.egg-info/
 
 # Cache
+
 .cache/
 
-# Mod�les g�n�r�s
+# Modèles générés
+
 *.pkl
 *.joblib
+
+# Données brutes volumineuses
+
+# À décommenter si les fichiers Fashion-MNIST ne doivent pas être envoyés sur GitHub
+# data/*.gz

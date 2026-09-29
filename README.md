@@ -2,17 +2,17 @@
 
 ## 📌 Description
 
-Ce projet consiste à développer **from scratch un réseau de neurones artificiel avec NumPy** pour réaliser une classification binaire sur la base de données **Fashion-MNIST**.
+Ce projet consiste à développer **from scratch un réseau de neurones artificiel avec NumPy** pour effectuer une classification binaire sur la base de données **Fashion-MNIST**.
 
-L'objectif est d'implémenter manuellement les principales étapes de l'apprentissage d'un réseau de neurones, sans utiliser de framework spécialisé de Deep Learning.
+L'objectif est de comprendre les principales étapes du fonctionnement d'un réseau de neurones sans utiliser de bibliothèque spécialisée de Deep Learning.
 
 ## 🎯 Objectif
 
-Fashion-MNIST contient initialement **10 catégories de vêtements**.
+Le problème initial de Fashion-MNIST contient 10 classes de vêtements.
 
-Dans ce projet, le problème est simplifié en une classification binaire :
+Dans ce projet, nous avons simplifié le problème en une **classification binaire** :
 
-* `1` → T-shirt / Top
+* `1` → T-shirt/top
 * `0` → autres catégories
 
 ## 📊 Dataset
@@ -26,114 +26,61 @@ Fashion-MNIST contient :
 
 Chaque image est transformée en un vecteur de **784 pixels**.
 
-## 🧹 Prétraitement
-
-Les principales étapes de préparation des données sont :
-
-1. Chargement des fichiers Fashion-MNIST
-2. Visualisation des images
-3. Normalisation des pixels de `[0, 255]` vers `[0, 1]`
-4. Transformation des images `28 × 28` en vecteurs de `784`
-5. Transformation du problème en classification binaire
-
-Après prétraitement :
-
-```text
-X_train : (784, 60000)
-X_test  : (784, 10000)
-```
-
 ## 🧠 Architecture du réseau
 
-L'architecture utilisée est :
+Le réseau utilisé possède l'architecture suivante :
 
 ```text
 784 → 32 → 32 → 32 → 1
 ```
 
-| Couche          | Neurones | Rôle                                        |
-| --------------- | -------: | ------------------------------------------- |
-| Entrée          |      784 | Représenter les pixels de l'image           |
-| Couche cachée 1 |       32 | Apprendre des caractéristiques              |
-| Couche cachée 2 |       32 | Combiner les caractéristiques               |
-| Couche cachée 3 |       32 | Construire une représentation plus complexe |
-| Sortie          |        1 | Produire la classification binaire          |
+| Couche   | Neurones | Rôle                               |
+| -------- | -------: | ---------------------------------- |
+| Entrée   |      784 | Pixels de l'image                  |
+| Cachée 1 |       32 | Apprentissage des caractéristiques |
+| Cachée 2 |       32 | Combinaison des caractéristiques   |
+| Cachée 3 |       32 | Représentation plus complexe       |
+| Sortie   |        1 | Classification binaire             |
 
-La fonction d'activation utilisée est la **sigmoïde**.
+Les couches utilisent la fonction d'activation **sigmoïde**.
 
-## ⚙️ Algorithmes implémentés
+## ⚙️ Méthodes implémentées
 
-Le réseau neuronal a été entièrement développé avec **NumPy**.
+Le réseau a été entièrement développé avec **NumPy**.
 
-Les principales fonctions implémentées sont :
+Les principales étapes sont :
 
-* Initialisation des poids et des biais
-* Propagation avant (*Forward Propagation*)
-* Fonction de coût **Log Loss**
-* Rétropropagation (*Backpropagation*)
-* Descente de gradient
-* Prédiction
-* Calcul de l'accuracy
-
-### Propagation avant
-
-Pour chaque couche :
-
-```text
-Z = W · A + b
-A = sigmoid(Z)
-```
-
-### Fonction d'activation
-
-```text
-sigmoid(z) = 1 / (1 + exp(-z))
-```
-
-### Mise à jour des paramètres
-
-```text
-W = W - learning_rate × dW
-b = b - learning_rate × db
-```
-
-## 🏋️ Entraînement
-
-Pour l'expérimentation présentée dans ce projet :
-
-* **1 000 images d'entraînement utilisées**
-* **50 itérations**
-* Learning rate : **0,1**
-* Architecture : `784 → 32 → 32 → 32 → 1`
-
-Le réseau suit l'évolution de :
-
-* la **Loss d'entraînement**
-* la **Loss de test**
-* l'**Accuracy d'entraînement**
-* l'**Accuracy de test**
+1. Chargement des données Fashion-MNIST
+2. Visualisation des images
+3. Normalisation des pixels
+4. Transformation des images `28 × 28` en vecteurs de `784`
+5. Classification binaire
+6. Initialisation des poids et des biais
+7. Propagation avant
+8. Calcul de la **Log Loss**
+9. Rétropropagation
+10. Descente de gradient
+11. Évaluation du modèle
 
 ## 📈 Résultats
 
-Les résultats obtenus sont :
+Pour l'expérimentation réalisée sur **1 000 images d'entraînement** pendant **50 itérations**, nous avons obtenu :
 
-| Mesure                |   Résultat |
+| Métrique              |   Résultat |
 | --------------------- | ---------: |
 | Accuracy entraînement | **88,6 %** |
 | Accuracy test         | **89,0 %** |
 
-Les courbes d'apprentissage sont disponibles dans :
+Les courbes de Loss et d'Accuracy sont disponibles dans le dossier :
 
 ```text
 results/figures/
 ```
 
-![Courbes d'apprentissage](results/figures/courbes_apprentissage.png)
-
 ## 📁 Structure du projet
 
 ```text
-projet-fashion-mnist-neurone_numpy/
+projet_fashion_mnist/
 │
 ├── data/
 │   ├── train-images-idx3-ubyte.gz
@@ -144,16 +91,18 @@ projet-fashion-mnist-neurone_numpy/
 ├── notebooks/
 │   └── 01_Fashion_MNIST_NumPy.ipynb
 │
-├── models/
-│
 ├── src/
+│
+├── models/
 │
 ├── results/
 │   └── figures/
+│     
+│       
 │       └── courbes_apprentissage.png
 │
-├── .gitignore
-└── README.md
+├── README.md
+└── .gitignore
 ```
 
 ## 🛠️ Technologies utilisées
@@ -164,34 +113,15 @@ projet-fashion-mnist-neurone_numpy/
 * **Jupyter Notebook**
 * **VS Code**
 
-## 🚀 Installation
+## 🚀 Exécution du projet
 
-Cloner le dépôt :
-
-```bash
-git clone https://github.com/Aliousow94/projet-fashion-mnist-neurone_numpy.git
-cd projet-fashion-mnist-neurone_numpy
-```
-
-Créer et activer un environnement virtuel :
-
-```bash
-python -m venv .venv
-```
-
-Sous Windows :
-
-```powershell
-.venv\Scripts\activate
-```
-
-Installer les dépendances :
+Après avoir installé Python et les dépendances nécessaires :
 
 ```bash
 pip install numpy matplotlib jupyter
 ```
 
-Lancer Jupyter :
+Lancer ensuite le notebook :
 
 ```bash
 jupyter notebook
@@ -205,20 +135,16 @@ notebooks/01_Fashion_MNIST_NumPy.ipynb
 
 ## 🔮 Perspectives
 
-Plusieurs améliorations sont possibles :
+Ce projet peut être amélioré en :
 
-* utiliser les **60 000 images d'entraînement** ;
-* augmenter le nombre d'itérations ;
-* tester différentes architectures ;
-* utiliser **ReLU** dans les couches cachées ;
-* réaliser une classification des **10 classes originales** ;
-* comparer cette implémentation NumPy avec des frameworks de Deep Learning.
+* utilisant les **60 000 images d'entraînement** ;
+* augmentant le nombre d'itérations ;
+* testant différentes architectures ;
+* utilisant **ReLU** pour les couches cachées ;
+* réalisant une classification des **10 classes originales** ;
+* comparant l'implémentation NumPy avec des frameworks de Deep Learning.
 
 ## 👨‍💻 Auteur
 
 **Mamadou Aliou SOW**
-
-Licence 3 Informatique
-Université Amadou Mahtar Mbow (UAM)
-
-**Domaines :** Data Science · Machine Learning · Deep Learning
+Licence 3 Informatique — Université Amadou Mahtar Mbow (UAM)
